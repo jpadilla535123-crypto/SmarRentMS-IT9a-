@@ -18,12 +18,13 @@
                         <i class="fas fa-home text-white text-lg"></i>
                     </div>
                     <div>
-                        <h2 class="text-xl font-bold text-gray-900">SmartRent</h2>
+                        <h2 class="text-xl font-bold text-gray-900">SmartRweweent</h2>
                         <p class="text-sm text-gray-500">Management System</p>
                     </div>
                 </div>
             </div>
 
+            <!-- wewe -->
             <!-- Navigation -->
             <nav class="flex-1 p-4">
                 <ul class="space-y-2">
