@@ -28,3 +28,7 @@ Route::get('/tenants', function () {
 Route::get('/maintenance', function () {
     return view('maintenance');
 });
+
+Route::get('/login', function () {
+    return view('login');
+});
