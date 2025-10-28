@@ -121,7 +121,7 @@
                 </button>
                 <button class="flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
                     <i class="fab fa-microsoft text-blue-500 mr-2"></i>
-                    <span class="text-sm font-medium text-gray-700">Microsoft</span>
+                    <span class="text-sm font-medium text-gray-700">Admin</span>
                 </button>
             </div>
         </div>

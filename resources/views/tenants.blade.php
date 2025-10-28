@@ -90,7 +90,7 @@
                         <h1 class="text-2xl font-bold text-gray-900">Tenants</h1>
                         <p class="text-gray-600 mt-1">Manage tenant information, leases, and communications.</p>
                     </div>
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center space-x-2">
+                    <button id="addTenantBtn" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center space-x-2">
                         <i class="fas fa-plus text-sm"></i>
                         <span>Add Tenant</span>
                     </button>
@@ -548,5 +548,289 @@
             </div>
         </div>
     </div>
+
+    <!-- Add Tenant Modal -->
+    <div id="addTenantModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between p-6 border-b border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-user-plus text-blue-600"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-900">Add New Tenant</h2>
+                        <p class="text-sm text-gray-500">Fill in the tenant information below</p>
+                    </div>
+                </div>
+                <button id="closeModalBtn" class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <form id="addTenantForm" class="p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Personal Information -->
+                    <div class="lg:col-span-2">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center space-x-2">
+                            <i class="fas fa-user text-blue-600"></i>
+                            <span>Personal Information</span>
+                        </h3>
+                    </div>
+
+                    <!-- First Name -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            First Name <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text" id="firstName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors" placeholder="Enter first name">
+                    </div>
+
+                    <!-- Last Name -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Last Name <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text" id="lastName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors" placeholder="Enter last name">
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Email Address <span class="text-red-500">*</span>
+                        </label>
+                        <input type="email" id="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors" placeholder="Enter email address">
+                    </div>
+
+                    <!-- Phone -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Phone Number <span class="text-red-500">*</span>
+                        </label>
+                        <input type="tel" id="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors" placeholder="(555) 123-4567">
+                    </div>
+
+                    <!-- Date of Birth -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Date of Birth
+                        </label>
+                        <input type="date" id="dateOfBirth" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors">
+                    </div>
+
+                    <!-- Emergency Contact -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Emergency Contact
+                        </label>
+                        <input type="text" id="emergencyContact" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors" placeholder="Emergency contact name">
+                    </div>
+
+                    <!-- Property Information -->
+                    <div class="lg:col-span-2 mt-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center space-x-2">
+                            <i class="fas fa-home text-blue-600"></i>
+                            <span>Property Information</span>
+                        </h3>
+                    </div>
+
+                    <!-- Property -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Property <span class="text-red-500">*</span>
+                        </label>
+                        <select id="property" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors">
+                            <option value="">Select a property</option>
+                            <option value="sunset-villa">Sunset Villa</option>
+                            <option value="downtown-loft">Downtown Loft</option>
+                            <option value="garden-court">Garden Court</option>
+                            <option value="tech-hub">Tech Hub</option>
+                            <option value="historic-heights">Historic Heights</option>
+                            <option value="riverside-manor">Riverside Manor</option>
+                        </select>
+                    </div>
+
+                    <!-- Unit -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Unit Number <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text" id="unit" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors" placeholder="e.g., 12A">
+                    </div>
+
+                    <!-- Monthly Rent -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Monthly Rent <span class="text-red-500">*</span>
+                        </label>
+                        <div class="relative">
+                            <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
+                            <input type="number" id="rent" required class="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors" placeholder="2800">
+                        </div>
+                    </div>
+
+                    <!-- Security Deposit -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Security Deposit
+                        </label>
+                        <div class="relative">
+                            <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
+                            <input type="number" id="deposit" class="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors" placeholder="2800">
+                        </div>
+                    </div>
+
+                    <!-- Lease Information -->
+                    <div class="lg:col-span-2 mt-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center space-x-2">
+                            <i class="fas fa-calendar-alt text-blue-600"></i>
+                            <span>Lease Information</span>
+                        </h3>
+                    </div>
+
+                    <!-- Lease Start Date -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Lease Start Date <span class="text-red-500">*</span>
+                        </label>
+                        <input type="date" id="leaseStart" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors">
+                    </div>
+
+                    <!-- Lease End Date -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Lease End Date <span class="text-red-500">*</span>
+                        </label>
+                        <input type="date" id="leaseEnd" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors">
+                    </div>
+
+                    <!-- Move-in Date -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Move-in Date
+                        </label>
+                        <input type="date" id="moveInDate" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors">
+                    </div>
+
+                    <!-- Lease Type -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Lease Type
+                        </label>
+                        <select id="leaseType" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors">
+                            <option value="fixed">Fixed Term</option>
+                            <option value="month-to-month">Month-to-Month</option>
+                            <option value="short-term">Short Term</option>
+                        </select>
+                    </div>
+
+                    <!-- Additional Notes -->
+                    <div class="lg:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Additional Notes
+                        </label>
+                        <textarea id="notes" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none" placeholder="Any additional information about the tenant..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="flex items-center justify-end space-x-4 mt-8 pt-6 border-t border-gray-200">
+                    <button type="button" id="cancelBtn" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium flex items-center space-x-2">
+                        <i class="fas fa-save"></i>
+                        <span>Add Tenant</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const addTenantBtn = document.getElementById('addTenantBtn');
+        const addTenantModal = document.getElementById('addTenantModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const addTenantForm = document.getElementById('addTenantForm');
+
+        // Open modal
+        addTenantBtn.addEventListener('click', () => {
+            addTenantModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close modal function
+        function closeModal() {
+            addTenantModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            addTenantForm.reset();
+        }
+
+        // Close modal events
+        closeModalBtn.addEventListener('click', closeModal);
+        cancelBtn.addEventListener('click', closeModal);
+
+        // Close modal when clicking outside
+        addTenantModal.addEventListener('click', (e) => {
+            if (e.target === addTenantModal) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !addTenantModal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        // Phone number formatting
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 6) {
+                value = `(${value.slice(0,3)}) ${value.slice(3,6)}-${value.slice(6,10)}`;
+            } else if (value.length >= 3) {
+                value = `(${value.slice(0,3)}) ${value.slice(3)}`;
+            }
+            e.target.value = value;
+        });
+
+        // Form submission
+        addTenantForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(addTenantForm);
+            const tenantData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                dateOfBirth: document.getElementById('dateOfBirth').value,
+                emergencyContact: document.getElementById('emergencyContact').value,
+                property: document.getElementById('property').value,
+                unit: document.getElementById('unit').value,
+                rent: document.getElementById('rent').value,
+                deposit: document.getElementById('deposit').value,
+                leaseStart: document.getElementById('leaseStart').value,
+                leaseEnd: document.getElementById('leaseEnd').value,
+                moveInDate: document.getElementById('moveInDate').value,
+                leaseType: document.getElementById('leaseType').value,
+                notes: document.getElementById('notes').value
+            };
+
+            // Here you would typically send the data to your backend
+            console.log('New tenant data:', tenantData);
+            
+            // Show success message (you can replace this with actual backend integration)
+            alert('Tenant added successfully!');
+            
+            // Close modal and reset form
+            closeModal();
+        });
+    </script>
 </body>
 </html>
