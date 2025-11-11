@@ -28,37 +28,37 @@
             <nav class="flex-1 p-4">
                 <ul class="space-y-2">
                     <li>
-                        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                        <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
                             <i class="fas fa-th-large w-5"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                        <a href="{{ route('properties') }}" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
                             <i class="fas fa-building w-5"></i>
                             <span>Properties</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                        <a href="{{ route('smartdevices') }}" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
                             <i class="fas fa-mobile-alt w-5"></i>
                             <span>Smart Devices</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                        <a href="{{ route('tenants') }}" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
                             <i class="fas fa-users w-5"></i>
                             <span>Tenants</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center space-x-3 px-4 py-3 bg-blue-50 text-blue-600 rounded-lg border-r-2 border-blue-600">
+                        <a href="{{ route('maintenance') }}" class="flex items-center space-x-3 px-4 py-3 bg-blue-50 text-blue-600 rounded-lg border-r-2 border-blue-600">
                             <i class="fas fa-wrench w-5"></i>
                             <span class="font-medium">Maintenance</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                        <a href="{{ route('analytics') }}" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
                             <i class="fas fa-chart-bar w-5"></i>
                             <span>Analytics</span>
                         </a>
@@ -103,52 +103,52 @@
                     <!-- Total Requests -->
                     <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                         <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-sm text-gray-600 mb-1">Total Requests</p>
-                                <p class="text-3xl font-bold text-gray-900">6</p>
-                            </div>
                             <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                                 <i class="fas fa-wrench text-blue-600 text-lg"></i>
                             </div>
+                            <div>
+                                <p class="text-sm text-gray-600 mb-1">Total Requests</p>
+                                <p class="text-3xl font-bold text-gray-900">6</p>
+                            </div>                           
                         </div>
                     </div>
 
                     <!-- Pending -->
                     <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                         <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-sm text-gray-600 mb-1">Pending</p>
-                                <p class="text-3xl font-bold text-gray-900">3</p>
-                            </div>
                             <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
                                 <i class="fas fa-clock text-orange-600 text-lg"></i>
                             </div>
+                            <div>
+                                <p class="text-sm text-gray-600 mb-1">Pending</p>
+                                <p class="text-3xl font-bold text-gray-900">3</p>
+                            </div>                            
                         </div>
                     </div>
 
                     <!-- In Progress -->
                     <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                         <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-sm text-gray-600 mb-1">In Progress</p>
-                                <p class="text-3xl font-bold text-gray-900">1</p>
-                            </div>
                             <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                                 <i class="fas fa-check-circle text-blue-600 text-lg"></i>
                             </div>
+                            <div>
+                                <p class="text-sm text-gray-600 mb-1">In Progress</p>
+                                <p class="text-3xl font-bold text-gray-900">1</p>
+                            </div>                           
                         </div>
                     </div>
 
                     <!-- High Priority -->
                     <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                         <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-sm text-gray-600 mb-1">High Priority</p>
-                                <p class="text-3xl font-bold text-gray-900">2</p>
-                            </div>
                             <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
                                 <i class="fas fa-exclamation-triangle text-red-600 text-lg"></i>
                             </div>
+                            <div>
+                                <p class="text-sm text-gray-600 mb-1">High Priority</p>
+                                <p class="text-3xl font-bold text-gray-900">2</p>
+                            </div>                          
                         </div>
                     </div>
                 </div>

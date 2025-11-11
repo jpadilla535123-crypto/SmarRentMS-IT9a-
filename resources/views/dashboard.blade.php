@@ -28,37 +28,37 @@
             <nav class="flex-1 p-4">
                 <ul class="space-y-2">
                     <li>
-                        <a href="#" class="flex items-center space-x-3 px-4 py-3 bg-blue-50 text-blue-600 rounded-lg border-r-2 border-blue-600">
+                        <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 px-4 py-3 bg-blue-50 text-blue-600 rounded-lg border-r-2 border-blue-600">
                             <i class="fas fa-th-large w-5"></i>
                             <span class="font-medium">Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                        <a href="{{ route('properties') }}" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
                             <i class="fas fa-building w-5"></i>
                             <span>Properties</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                        <a href="{{ route('smartdevices') }}" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
                             <i class="fas fa-mobile-alt w-5"></i>
                             <span>Smart Devices</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                        <a href="{{ route('tenants') }}" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
                             <i class="fas fa-users w-5"></i>
                             <span>Tenants</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                        <a href="{{ route('maintenance') }}" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
                             <i class="fas fa-wrench w-5"></i>
                             <span>Maintenance</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                        <a href="{{ route('analytics') }}" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
                             <i class="fas fa-chart-bar w-5"></i>
                             <span>Analytics</span>
                         </a>
@@ -96,56 +96,60 @@
                     <!-- Total Properties -->
                     <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                         <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-building text-white text-lg"></i>
+                            </div>
                             <div>
                                 <p class="text-sm font-medium text-gray-500 mb-1">Total Properties</p>
                                 <p class="text-3xl font-bold text-gray-900 mb-1">24</p>
                                 <p class="text-sm text-green-600">+2 from last month</p>
                             </div>
-                            <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-building text-white text-lg"></i>
-                            </div>
+                            
                         </div>
                     </div>
 
                     <!-- Active Tenants -->
                     <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                         <div class="flex items-center justify-between">
+                              <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-users text-white text-lg"></i>
+                            </div>
                             <div>
                                 <p class="text-sm font-medium text-gray-500 mb-1">Active Tenants</p>
                                 <p class="text-3xl font-bold text-gray-900 mb-1">89</p>
                                 <p class="text-sm text-green-600">+5 from last month</p>
                             </div>
-                            <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-users text-white text-lg"></i>
-                            </div>
+                          
                         </div>
                     </div>
 
                     <!-- Smart Devices -->
                     <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                         <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-mobile-alt text-white text-lg"></i>
+                            </div>
                             <div>
                                 <p class="text-sm font-medium text-gray-500 mb-1">Smart Devices</p>
                                 <p class="text-3xl font-bold text-gray-900 mb-1">156</p>
                                 <p class="text-sm text-green-600">+12 from last month</p>
                             </div>
-                            <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-mobile-alt text-white text-lg"></i>
-                            </div>
+
                         </div>
                     </div>
 
                     <!-- Monthly Revenue -->
                     <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                         <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-dollar-sign text-white text-lg"></i>
+                            </div>
                             <div>
                                 <p class="text-sm font-medium text-gray-500 mb-1">Monthly Revenue</p>
                                 <p class="text-3xl font-bold text-gray-900 mb-1">$48,320</p>
                                 <p class="text-sm text-green-600">+8.2% from last month</p>
                             </div>
-                            <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-dollar-sign text-white text-lg"></i>
-                            </div>
+
                         </div>
                     </div>
                 </div>

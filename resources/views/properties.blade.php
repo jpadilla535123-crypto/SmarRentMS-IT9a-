@@ -28,37 +28,37 @@
             <nav class="flex-1 p-4">
                 <ul class="space-y-2">
                     <li>
-                        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                        <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
                             <i class="fas fa-th-large w-5"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center space-x-3 px-4 py-3 bg-blue-50 text-blue-600 rounded-lg border-r-2 border-blue-600">
+                        <a href="{{ route('properties') }}" class="flex items-center space-x-3 px-4 py-3 bg-blue-50 text-blue-600 rounded-lg border-r-2 border-blue-600">
                             <i class="fas fa-building w-5"></i>
                             <span class="font-medium">Properties</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                        <a href="{{ route('smartdevices') }}" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
                             <i class="fas fa-mobile-alt w-5"></i>
                             <span>Smart Devices</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                        <a href="{{ route('tenants') }}" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
                             <i class="fas fa-users w-5"></i>
                             <span>Tenants</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                        <a href="{{ route('maintenance') }}" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
                             <i class="fas fa-wrench w-5"></i>
                             <span>Maintenance</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                        <a href="{{ route('analytics') }}" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
                             <i class="fas fa-chart-bar w-5"></i>
                             <span>Analytics</span>
                         </a>
@@ -90,7 +90,7 @@
                         <h1 class="text-2xl font-bold text-gray-900">Properties</h1>
                         <p class="text-gray-600 mt-1">Manage your rental properties and track their performance.</p>
                     </div>
-                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center space-x-2">
+                    <button id="addPropertyBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center space-x-2">
                         <i class="fas fa-plus text-sm"></i>
                         <span>Add Property</span>
                     </button>
@@ -416,5 +416,320 @@
             </div>
         </div>
     </div>
+
+    <!-- Add Property Modal -->
+    <div id="addPropertyModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl mx-4 max-h-[90vh] overflow-y-auto">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between p-6 border-b border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-building text-blue-600 text-lg"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-900">Add New Property</h2>
+                        <p class="text-sm text-gray-500">Fill in the property details below</p>
+                    </div>
+                </div>
+                <button id="closeModal" class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content -->
+            <form id="addPropertyForm" class="p-6 space-y-6">
+                <!-- Basic Information -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                        <i class="fas fa-info-circle text-blue-600 mr-2"></i>
+                        Basic Information
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Property Name <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" id="propertyName" required 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                   placeholder="e.g., Sunset Villa Complex">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Property Type <span class="text-red-500">*</span>
+                            </label>
+                            <select id="propertyType" required 
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select Type</option>
+                                <option value="apartment">Apartment Complex</option>
+                                <option value="condo">Condominium</option>
+                                <option value="townhouse">Townhouse</option>
+                                <option value="single-family">Single Family Home</option>
+                                <option value="duplex">Duplex</option>
+                                <option value="commercial">Commercial</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location Information -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                        <i class="fas fa-map-marker-alt text-blue-600 mr-2"></i>
+                        Location Information
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Street Address <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" id="streetAddress" required 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                   placeholder="123 Ocean Drive">
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    City <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="city" required 
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                       placeholder="Miami">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    State <span class="text-red-500">*</span>
+                                </label>
+                                <select id="state" required 
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <option value="">Select State</option>
+                                    <option value="FL">Florida</option>
+                                    <option value="NY">New York</option>
+                                    <option value="TX">Texas</option>
+                                    <option value="CA">California</option>
+                                    <option value="WA">Washington</option>
+                                    <option value="IL">Illinois</option>
+                                    <option value="OR">Oregon</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    ZIP Code <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="zipCode" required 
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                       placeholder="33139">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Details -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                        <i class="fas fa-home text-blue-600 mr-2"></i>
+                        Property Details
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Total Units <span class="text-red-500">*</span>
+                            </label>
+                            <input type="number" id="totalUnits" required min="1"
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                   placeholder="24">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Year Built
+                            </label>
+                            <input type="number" id="yearBuilt" min="1800" max="2024"
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                   placeholder="2018">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Square Footage
+                            </label>
+                            <input type="number" id="squareFootage" min="1"
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                   placeholder="15000">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Financial Information -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                        <i class="fas fa-dollar-sign text-blue-600 mr-2"></i>
+                        Financial Information
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Average Rent per Unit <span class="text-red-500">*</span>
+                            </label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
+                                <input type="number" id="averageRent" required min="0" step="0.01"
+                                       class="w-full pl-8 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                       placeholder="2800.00">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Security Deposit <span class="text-red-500">*</span>
+                            </label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
+                                <input type="number" id="securityDeposit" required min="0" step="0.01"
+                                       class="w-full pl-8 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                       placeholder="2800.00">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Amenities -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                        <i class="fas fa-star text-blue-600 mr-2"></i>
+                        Amenities
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" id="parking" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                            <span class="text-sm text-gray-700">Parking</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" id="pool" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                            <span class="text-sm text-gray-700">Swimming Pool</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" id="gym" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                            <span class="text-sm text-gray-700">Fitness Center</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" id="laundry" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                            <span class="text-sm text-gray-700">Laundry</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" id="elevator" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                            <span class="text-sm text-gray-700">Elevator</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" id="balcony" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                            <span class="text-sm text-gray-700">Balcony</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                        <i class="fas fa-clipboard text-blue-600 mr-2"></i>
+                        Additional Information
+                    </h3>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Property Description
+                        </label>
+                        <textarea id="propertyDescription" rows="4"
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                  placeholder="Describe the property, its features, and any special characteristics..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="flex items-center justify-end space-x-3 pt-6 border-t border-gray-200">
+                    <button type="button" id="cancelBtn" class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 font-medium transition-colors">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors flex items-center space-x-2">
+                        <i class="fas fa-plus text-sm"></i>
+                        <span>Add Property</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const addPropertyBtn = document.getElementById('addPropertyBtn');
+        const addPropertyModal = document.getElementById('addPropertyModal');
+        const closeModal = document.getElementById('closeModal');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const addPropertyForm = document.getElementById('addPropertyForm');
+
+        // Open modal
+        addPropertyBtn.addEventListener('click', () => {
+            addPropertyModal.classList.remove('hidden');
+            addPropertyModal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close modal function
+        function closeModalFunction() {
+            addPropertyModal.classList.add('hidden');
+            addPropertyModal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+            addPropertyForm.reset();
+        }
+
+        // Close modal events
+        closeModal.addEventListener('click', closeModalFunction);
+        cancelBtn.addEventListener('click', closeModalFunction);
+
+        // Close modal when clicking outside
+        addPropertyModal.addEventListener('click', (e) => {
+            if (e.target === addPropertyModal) {
+                closeModalFunction();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !addPropertyModal.classList.contains('hidden')) {
+                closeModalFunction();
+            }
+        });
+
+        // Form submission
+        addPropertyForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = {
+                propertyName: document.getElementById('propertyName').value,
+                propertyType: document.getElementById('propertyType').value,
+                streetAddress: document.getElementById('streetAddress').value,
+                city: document.getElementById('city').value,
+                state: document.getElementById('state').value,
+                zipCode: document.getElementById('zipCode').value,
+                totalUnits: document.getElementById('totalUnits').value,
+                yearBuilt: document.getElementById('yearBuilt').value,
+                squareFootage: document.getElementById('squareFootage').value,
+                averageRent: document.getElementById('averageRent').value,
+                securityDeposit: document.getElementById('securityDeposit').value,
+                propertyDescription: document.getElementById('propertyDescription').value,
+                amenities: {
+                    parking: document.getElementById('parking').checked,
+                    pool: document.getElementById('pool').checked,
+                    gym: document.getElementById('gym').checked,
+                    laundry: document.getElementById('laundry').checked,
+                    elevator: document.getElementById('elevator').checked,
+                    balcony: document.getElementById('balcony').checked
+                }
+            };
+
+            console.log('Property Data:', formData);
+            
+            // Show success message
+            alert('Property added successfully!');
+            
+            // Close modal and reset form
+            closeModalFunction();
+        });
+    </script>
 </body>
 </html>
