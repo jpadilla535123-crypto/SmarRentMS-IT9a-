@@ -23,13 +23,13 @@
                         <p class="text-sm text-gray-500">Management System</p>
                     </div>
                 </div>
-            </div>
+            </div>  
 
             <!-- Navigation -->
             <nav class="flex-1 p-4">
                 <ul class="space-y-2">
                     <li>
-                        <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                        <a href="{{ route('dashboard') }}"class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
                             <i class="fas fa-th-large w-5"></i>
                             <span>Dashboard</span>
                         </a>
